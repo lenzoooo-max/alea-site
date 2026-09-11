@@ -1,0 +1,280 @@
+<!doctype html>
+<html lang="fr">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Aléa — Confidentialité, contact et sources</title>
+<meta name="description" content="Aléa réunit les alertes environnement officielles de votre commune. Politique de confidentialité, contact et sources des données.">
+<meta name="color-scheme" content="light">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+<style>
+/* =====================================================================
+   Jetons repris de constants/theme.ts, valeur pour valeur. Aucun n'est
+   inventé ici : si la charte bouge, c'est là-bas qu'elle bouge.
+
+   THÈME CLAIR UNIQUEMENT, comme l'app. theme.ts le dit en toutes lettres :
+   « les deux seuls fonds utilisés en V1, thème clair uniquement, aucun fond
+   sombre nulle part ». Une première version de cette page ajoutait un mode
+   sombre : il n'existe nulle part dans le produit.
+
+   LES TAILLES SONT CELLES DU WEB, PAS CELLES DU TÉLÉPHONE. Les rôles de
+   theme.ts vont de 9,5 à 26 px pour un écran tenu à trente centimètres.
+   Lus sur un ordinateur, ils seraient illisibles. Ce qui est repris, ce sont
+   les COULEURS, les GRAISSES, les INTERLETTRAGES et la HIÉRARCHIE des rôles.
+   ===================================================================== */
+:root {
+  --fond:      #F6F8FB;
+  --carte:     #FFFFFF;
+  --encre:     #171D26;
+  --encre2:    #666E7D;
+  --hair:      #ECEFF3;
+  --bleuTx:    #1668BE;
+  --bleuTint:  #EAF4FF;
+  --chevron:   #7C8794;
+  --rCard:     20px;
+  --rCardL:    22px;
+  --ombre:     0 4px 12px rgba(23, 29, 38, 0.06);
+  --jakarta:   'Plus Jakarta Sans', -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Helvetica, Arial, sans-serif;
+}
+
+* { box-sizing: border-box; }
+
+html { -webkit-text-size-adjust: 100%; }
+
+body {
+  margin: 0;
+  background: var(--fond);
+  color: var(--encre);
+  font-family: var(--jakarta);
+  font-size: 15.5px;
+  font-weight: 500;
+  line-height: 1.62;
+}
+
+.page { max-width: 680px; margin: 0 auto; padding: 44px 20px 56px; }
+
+/* --- En-tête : rôle `titreCommune`, 26 px / 800 / -0.65 --------------- */
+header { margin-bottom: 28px; }
+
+h1 {
+  margin: 0 0 4px;
+  font-size: 34px;
+  font-weight: 800;
+  letter-spacing: -0.85px;
+  line-height: 1.12;
+  color: var(--encre);
+}
+
+.chapeau {
+  margin: 0;
+  font-size: 15px;
+  font-weight: 600;
+  color: var(--encre2);
+}
+
+/* --- Le bandeau d'avertissement -------------------------------------- */
+/* Le teinté bleu, PAS DU ROUGE, et c'est une règle de la charte : le rouge
+   appartient aux palettes officielles, où il veut dire « crise ». Le
+   reprendre pour un avertissement de lecture le mettrait en concurrence
+   avec un niveau de source. C'est le motif de « EN RÉSUMÉ » sur la fiche
+   commune, qui sert exactement à ça : dire ce qu'il faut savoir avant de
+   lire le reste. */
+.avis {
+  background: var(--bleuTint);
+  border-radius: var(--rCardL);
+  padding: 20px 24px;
+  margin-bottom: 20px;
+}
+
+.avis .secH { color: var(--bleuTx); }
+.avis p { margin: 0; }
+.avis strong { font-weight: 800; }
+
+/* --- Cartes : radius 20, ombre du jeton SHADOW ------------------------ */
+section {
+  background: var(--carte);
+  border-radius: var(--rCard);
+  box-shadow: var(--ombre);
+  padding: 24px 26px;
+  margin-bottom: 18px;
+}
+
+/* --- En-tête de section : rôle `titreSection`, 800 / +1.05 / capitales - */
+.secH {
+  margin: 0 0 14px;
+  font-size: 10.5px;
+  font-weight: 800;
+  letter-spacing: 1.05px;
+  text-transform: uppercase;
+  color: var(--encre2);
+}
+
+/* --- Sous-titre de bloc : rôle `nomCategorie`, 700 ------------------- */
+h3 {
+  margin: 24px 0 7px;
+  font-size: 16px;
+  font-weight: 700;
+  letter-spacing: -0.2px;
+  color: var(--encre);
+}
+h3:first-of-type { margin-top: 0; }
+
+p { margin: 0 0 13px; }
+p:last-child { margin-bottom: 0; }
+
+ul { margin: 0 0 13px; padding-left: 0; list-style: none; }
+
+/* Une puce discrète, au ton des glyphes d'affordance (#7C8794), qui tient
+   la règle 1.4.11 sans prétendre être du texte. */
+li {
+  position: relative;
+  padding-left: 18px;
+  margin-bottom: 6px;
+}
+li::before {
+  content: '';
+  position: absolute;
+  left: 2px;
+  top: 0.72em;
+  width: 5px;
+  height: 5px;
+  border-radius: 999px;
+  background: var(--chevron);
+}
+li:last-child { margin-bottom: 0; }
+li strong { font-weight: 700; }
+
+/* --- La note en retrait : rôle `notePied`, encre2 -------------------- */
+.note {
+  border-left: 2px solid var(--hair);
+  padding-left: 15px;
+  color: var(--encre2);
+  font-size: 14px;
+  font-weight: 500;
+}
+
+a { color: var(--bleuTx); text-decoration-thickness: 1px; text-underline-offset: 2px; }
+a:hover { text-decoration-thickness: 2px; }
+
+.contact {
+  display: inline-block;
+  font-size: 17px;
+  font-weight: 700;
+  letter-spacing: -0.2px;
+}
+
+/* --- Pied : rôle `notePied`, 10 px / 500 / encre2 -------------------- */
+footer {
+  margin-top: 26px;
+  padding-top: 20px;
+  border-top: 1px solid var(--hair);
+  color: var(--encre2);
+  font-size: 12.5px;
+  font-weight: 500;
+}
+footer p { margin: 0; }
+
+@media (max-width: 480px) {
+  .page { padding: 32px 16px 44px; }
+  h1 { font-size: 29px; letter-spacing: -0.7px; }
+  section, .avis { padding: 20px 18px; }
+}
+</style>
+</head>
+<body>
+<div class="page">
+
+<header>
+  <h1>Aléa</h1>
+  <p class="chapeau">Les alertes environnement officielles de votre commune, sur un seul écran.</p>
+</header>
+
+<div class="avis">
+  <p class="secH">À savoir avant de lire</p>
+  <p>
+    <strong>Aléa n’est pas un service d’alerte d’urgence.</strong> L’application
+    reprend des informations publiées par les services de l’État. Elle peut être en
+    retard sur eux, et elle n’affiche rien quand une source ne publie pas. En cas de
+    danger immédiat, appelez le <strong>112</strong> et suivez les consignes de votre
+    préfecture.
+  </p>
+</div>
+
+<section id="confidentialite">
+  <p class="secH">Confidentialité</p>
+
+  <h3>Aléa ne collecte aucune donnée personnelle</h3>
+  <ul>
+    <li>Aucun compte, aucune inscription, aucun identifiant.</li>
+    <li>Aucun accès à la localisation de votre téléphone.</li>
+    <li>Aucune mesure d’audience, aucun traceur, aucune publicité.</li>
+    <li>Aucune donnée revendue ni transmise à un tiers.</li>
+  </ul>
+
+  <h3>Ce qui reste sur votre téléphone</h3>
+  <p>Trois choses, enregistrées sur l’appareil seulement, et jamais envoyées ailleurs :</p>
+  <ul>
+    <li>les communes que vous suivez ;</li>
+    <li>les dernières communes que vous avez consultées ;</li>
+    <li>la date de votre dernière visite, qui sert à vous montrer ce qui a changé depuis.</li>
+  </ul>
+  <p>Elles disparaissent avec l’application si vous la désinstallez.</p>
+
+  <h3>Ce qui circule</h3>
+  <p>
+    Pour afficher une commune, l’application demande ses données à notre serveur. Cette
+    requête ne contient que des codes de communes : ni compte, ni identifiant
+    d’appareil, ni position.
+  </p>
+  <p class="note">
+    Comme tout service en ligne, notre hébergeur tient des journaux techniques de
+    connexion. Ils ne sont rapprochés d’aucune personne et ne servent qu’au bon
+    fonctionnement du service.
+  </p>
+
+  <h3>Vos droits</h3>
+  <p>
+    L’application ne détient aucune donnée vous concernant : il n’y a rien à consulter,
+    corriger ni supprimer de notre côté. Pour toute question, écrivez-nous.
+  </p>
+</section>
+
+<section id="support">
+  <p class="secH">Contact et support</p>
+  <p>Une question, une donnée qui vous paraît fausse, un problème dans l’application :</p>
+  <p><a class="contact" href="mailto:contact@alearisques.com">contact@alearisques.com</a></p>
+  <p class="note">
+    Si un niveau vous paraît faux, l’arrêté ou le bulletin officiel fait foi. Le nom de
+    la source est indiqué sur chaque écran de l’application.
+  </p>
+</section>
+
+<section id="sources">
+  <p class="secH">Sources</p>
+  <p>
+    Toutes les données affichées sont publiques et viennent des services de l’État.
+    Elles sont reprises avec les mots de leur source, sans reformulation.
+  </p>
+  <ul>
+    <li><strong>Vigilance météo et Météo des forêts</strong> — Météo-France</li>
+    <li><strong>Qualité de l’air et pollens</strong> — Atmo France et les AASQA</li>
+    <li><strong>Crues</strong> — Vigicrues, ministère de la Transition écologique</li>
+    <li><strong>Sécheresse</strong> — VigiEau, ministère de la Transition écologique</li>
+    <li><strong>Eau du robinet</strong> — ministère chargé de la Santé, via Hub’Eau</li>
+    <li><strong>Exposition du terrain</strong> — Géorisques, BRGM</li>
+  </ul>
+  <p class="note">
+    Ces données sont diffusées sous Licence Ouverte / Open Licence (Etalab). Aléa n’est
+    pas un service officiel et n’est affilié à aucun de ces organismes.
+  </p>
+</section>
+
+<footer>
+  <p>Aléa · Page mise à jour le 11 septembre 2026</p>
+</footer>
+
+</div>
+</body>
+</html>
